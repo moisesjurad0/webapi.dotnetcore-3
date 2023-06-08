@@ -1,4 +1,6 @@
-﻿namespace myAPI.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace myAPI.Models
 {
     public class myContext : DbContext 
     {
