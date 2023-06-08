@@ -5,14 +5,19 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
+# Set the ASP.NET Core environment variable
+ENV ASPNETCORE_ENVIRONMENT=Development
+# Set the PostgreSQL connection string
+ENV ConnectionStrings__DefaultConnection=Server=db;Port=5432;Database=mydatabase;User Id=postgres;Password=password;
 EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["myAPI/myAPI.csproj", "myAPI/"]
+#COPY ["myAPI/myAPI.csproj", "myAPI/"]
+COPY [".", "myAPI/"]
 RUN dotnet restore "myAPI/myAPI.csproj"
-COPY . .
+#COPY . .
 WORKDIR "/src/myAPI"
 RUN dotnet build "myAPI.csproj" -c Release -o /app/build
 
