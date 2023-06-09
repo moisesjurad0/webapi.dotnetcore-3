@@ -1,10 +1,11 @@
 version: '3'
 services:
   webapi:
-    build:
-      context: .
-      #context: ./myAPI
-      dockerfile: Dockerfile
+    build: .
+    #build:
+    #  context: .
+    #  #context: ./myAPI
+    #  dockerfile: Dockerfile
     ports:
       - 8080:80
       - 8081:443
